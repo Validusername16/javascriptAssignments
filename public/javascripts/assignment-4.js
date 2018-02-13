@@ -7,6 +7,7 @@ function main() {
 mainPrompt();
 }
 function init() {
+
     movieTitles[0] = PROMPT.question("Please enter the title for movie 1");
     movieTitles[1] = PROMPT.question("Please enter the title for movie 2");
     movieTitles[2] = PROMPT.question("Please enter the title for movie 3");

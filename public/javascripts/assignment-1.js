@@ -11,7 +11,7 @@ function main() {
     setBathrooms();
     setGarageSize();
     calculatePrice();
-    console.log("The total cost for Lot " + lotNumber + " is $" + total);
+    console.log("The total cost for Lot " + lotNumber + " is $" + total + ".");
 }
 main();
 function setLotNumber(){

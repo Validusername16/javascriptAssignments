@@ -1,9 +1,9 @@
 "use scrict";
 const PROMPT = require('readline-sync');
 let firstName,lastName; //Strings
-let basePrice,policyNumber,Age,accidentFaults,premiumTotal,birthDay,birthMonth,birthYear,currentDay,currentMonth,currentYear; //Integers
+let policyNumber,Age,accidentFaults,premiumTotal,birthDay,birthMonth,birthYear,currentDay,currentMonth,currentYear; //Integers
 function main() {
-    basePrice = 100;
+    const BASE_PRICE = 100;
     setName();
     setPolicyNumber();
     setBirthDate()
@@ -42,7 +42,7 @@ function setFaults() {
 }
 function calculate() {
     Age = currentYear - birthYear;
-    premiumTotal = basePrice;
+    premiumTotal = BASE_PRICE;
     premiumTotal = accidentFaults*50;
     if(Age > 15 && Age < 30) {
         premiumTotal = premiumTotal + 20;

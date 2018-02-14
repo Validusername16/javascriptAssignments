@@ -18,10 +18,10 @@ function setLotNumber(){
     lotNumber = PROMPT.question("Please enter a lot number: ");
 }
 function setBedrooms() {
-    bedroomCount = PROMPT.question("How many bedrooms? ");
+    bedroomCount = PROMPT.question("How many bedrooms are there? ");
 }
 function setBathrooms() {
-    bathroomCount = PROMPT.question("How many bathrooms? ");
+    bathroomCount = PROMPT.question("How many bathrooms are there? ");
 }
 function setGarageSize() {
     garageSize = PROMPT.question("How many cars do you plan to fit in your garage? ");

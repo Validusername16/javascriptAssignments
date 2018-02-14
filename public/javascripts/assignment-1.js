@@ -27,5 +27,5 @@ function setGarageSize() {
     garageSize = PROMPT.question("How many cars do you plan to fit in your garage? ");
 }
 function calculatePrice() {
-    total = BASE_PRICE + (BEDROOM_COST * bedroomCount) + (BATHROOM_COST * bathroomCount) + (GARAGE_SIZE_COST + garageSize);
+    total = BASE_PRICE + (BEDROOM_COST * bedroomCount) + (BATHROOM_COST * bathroomCount) + (GARAGE_SIZE_COST * garageSize);
 }

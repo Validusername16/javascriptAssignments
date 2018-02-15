@@ -2,8 +2,11 @@
 const PROMPT = require('readline-sync');
 let firstName,lastName; //Strings
 let policyNumber,Age,accidentFaults,premiumTotal,birthDay,birthMonth,birthYear,currentDay,currentMonth,currentYear; //Integers
+const BASE_PRICE = 100;
+const THIS_YEAR = 2018;
+const THIS_MONTH = 2;
+const THIS_DAY = 15;
 function main() {
-    const BASE_PRICE = 100;
     setName();
     setPolicyNumber();
     setBirthDate()
@@ -24,9 +27,6 @@ function setPolicyNumber() {
     policyNumber = PROMPT.question("Please enter your policy number. ");
 }
 function setBirthDate() {
-    currentYear = 2018;
-    currentDay = 26;
-    currentMonth = 1;
     birthMonth = PROMPT.question("Please enter the month of your birthdate. ");
     birthDay = PROMPT.question("Please enter the day of your birthdate. ");
     birthYear = PROMPT.question("Please enter the year of your birthdate. ");
@@ -41,9 +41,8 @@ function setFaults() {
     accidentFaults = PROMPT.question("Please enter how many accident faults you've had since " + currentMonth + "/" + currentDay + "/" + (currentYear-3) + ". ");
 }
 function calculate() {
-    Age = currentYear - birthYear;
-    premiumTotal = BASE_PRICE;
-    premiumTotal = accidentFaults*50;
+    Age = THIS_YEAR - birthYear;
+    premiumTotal = BASE_PRICE + (accidentFaults*50);
     if(Age > 15 && Age < 30) {
         premiumTotal = premiumTotal + 20;
     }

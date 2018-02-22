@@ -37,9 +37,9 @@ if(promptInput == 1 || promptInput == 2 || promptInput == 3 || promptInput == 4 
     tempRating = PROMPT.question("Please enter a rating for " + movieTitles[promptInput-1] + ". ");
 
     if(tempRating == 1) {
-        slots [promptInput - 1] = slots [promptInput-1] + 1;
-        ratings1[slots[0]] = tempRating;
-        reviews1 [slots[0]] = PROMPT.question("Please type in your review. ");
+    slots [promptInput - 1] = slots [promptInput-1] + 1;
+    ratings1[slots[0]] = tempRating;
+    reviews1 [slots[0]] = PROMPT.question("Please type in your review. ");
         return mainPrompt();
     } else if (tempRating == 2) {
         slots [promptInput - 1] = slots [promptInput-1] + 1;
@@ -77,7 +77,8 @@ function viewReviews() {
     promptInput = PROMPT.question("Please enter a movie to review: 1-" + movieTitles[0] + " 2-" + movieTitles[1] + " 3-" + movieTitles[2] + " 4-" + movieTitles[3] + " 5-" + movieTitles[4]);
 
     if(promptInput == 1) {
-        randomValue = Math.floor(Math.random() * reviews1.length + 1);
+        randomValue = Math.floor(Math.random() * reviews1.length);
+        console.log(reviews1.length                 );
         console.log("Rating number " + randomValue + ": " + ratings1[randomValue] + "/5  " + reviews1[randomValue]);
 } else if (promptInput == 2) {
         randomValue = Math.floor(Math.random() * reviews2.length);

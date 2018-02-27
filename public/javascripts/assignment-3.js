@@ -7,11 +7,11 @@ let exitValue;
 function main() {
 rateAttempts = 0;
 prompt();
+    process.stdout.write('\x1Bc');
 if(exitValue == true){
-    process.stdout.write('\x1Bc');
     calculate();
-} if (exitValue == false){
-    process.stdout.write('\x1Bc');
+} else {
+
     main();
     }
 }

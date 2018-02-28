@@ -30,19 +30,44 @@ function reviewWriting() {
     numberInput = PROMPT.question("Please enter a movie to review: 1-" + movieTitles[0] + " 2-" + movieTitles[1] + " 3-" + movieTitles[2] + " 4-" + movieTitles[3] + " 5-" + movieTitles[4] + "\n");
     if (numberInput == 1) {
         ratings1[ratings1.length] = PROMPT.question("Please enter a rating for " + movieTitles[0] + "\n");
+        if (ratings1[ratings1.length-1] > 5 || ratings1[ratings1.length-1] < 0) {
+            ratings1.pop();
+            console.log("I'm sorry, that is an invalid response. Please reselect your movie and try again.");
+            return reviewWriting();
+        }
         reviews1[reviews1.length] = PROMPT.question("Please enter a review for " + movieTitles[0]  + "\n");
     } else if (numberInput == 2) {
         ratings2[ratings2.length] = PROMPT.question("Please enter a rating for " + movieTitles[1]  + "\n");
         reviews2[reviews2.length] = PROMPT.question("Please enter a rating for " + movieTitles[1]  + "\n");
+        if (ratings2[ratings2.length-1] > 5 || ratings2[ratings2.length-1] < 0) {
+            ratings2.pop();
+            console.log("I'm sorry, that is an invalid response. Please reselect your movie and try again.");
+            return reviewWriting();
+        }
     } else if (numberInput == 3) {
         ratings3[ratings3.length] = PROMPT.question("Please enter a rating for " + movieTitles[2]  + "\n");
         reviews3[reviews3.length] = PROMPT.question("Please enter a rating for " + movieTitles[2]  + "\n");
+        if (ratings3[ratings3.length-1] > 5 || ratings3[ratings3.length-1] < 0) {
+            ratings3.pop();
+            console.log("I'm sorry, that is an invalid response. Please reselect your movie and try again.");
+            return reviewWriting();
+        }
     } else if (numberInput == 4) {
         ratings4[ratings4.length] = PROMPT.question("Please enter a rating for " + movieTitles[3]  + "\n");
         reviews4[reviews4.length] = PROMPT.question("Please enter a rating for " + movieTitles[3]  + "\n");
+        if (ratings4[ratings4.length-1] > 5 || ratings4[ratings4.length-1] < 0) {
+            ratings4.pop();
+            console.log("I'm sorry, that is an invalid response. Please reselect your movie and try again.");
+            return reviewWriting();
+        }
     } else if (numberInput == 5) {
         ratings5[ratings5.length] = PROMPT.question("Please enter a rating for " + movieTitles[4]  + "\n");
         reviews5[reviews5.length] = PROMPT.question("Please enter a rating for " + movieTitles[4]  + "\n");
+        if (ratings5[ratings5.length-1] > 5 || ratings5[ratings5.length-1] < 0) {
+            ratings5.pop();
+            console.log("I'm sorry, that is an invalid response. Please reselect your movie and try again.");
+            return reviewWriting();
+        }
     } else {
         console.log("Invalid response, try again.");
     }
@@ -55,26 +80,82 @@ function viewReviews() {
     if(numberInput == 1) {
         let temp = ratings1.length - 1;
         numberInput = PROMPT.question("There are a total of " + reviews1.length + " ratings for that movie. Please choose which review number you want to read.");
+        if(numberInput < 0 || numberInput > reviews1.length) {
+            console.log("That is not a valid review number. Reselect the movie and try again.");
+            return viewReviews();
+        }
         console.log("Rating number " + numberInput + ":  " + ratings1[temp] + "/5 : " + reviews1[temp]);
     } else if (numberInput == 2) {
         let temp = ratings2.length - 1;
         numberInput = PROMPT.question("There are a total of " + reviews2.length + " ratings for that movie. Please choose which review number you want to read.");
+        if(numberInput < 0 || numberInput > reviews2.length) {
+            console.log("That is not a valid review number. Reselect the movie and try again.");
+            return viewReviews();
+        }
         console.log("Rating number " + numberInput + ":  " + ratings2[temp] + "/5 : " + reviews2[temp]);
     } else if (numberInput == 3) {
         let temp = ratings3.length - 1;
         numberInput = PROMPT.question("There are a total of " + reviews3.length + " ratings for that movie. Please choose which review number you want to read.");
+        if(numberInput < 0 || numberInput > reviews3.length) {
+            console.log("That is not a valid review number. Reselect the movie and try again.");
+            return viewReviews();
+        }
         console.log("Rating number " + numberInput + ":  " + ratings3[temp] + "/5 : " + reviews3[temp]);
     } else if (numberInput == 4) {
         let temp = ratings4.length - 1;
         numberInput = PROMPT.question("There are a total of " + reviews4.length + " ratings for that movie. Please choose which review number you want to read.");
+        if(numberInput < 0 || numberInput > reviews4.length) {
+            console.log("That is not a valid review number. Reselect the movie and try again.");
+            return viewReviews();
+        }
         console.log("Rating number " + numberInput + ":  " + ratings4[temp] + "/5 : " + reviews4[temp]);
     } else if (numberInput == 5) {
         let temp = ratings5.length - 1;
         numberInput = PROMPT.question("There are a total of " + reviews5.length + " ratings for that movie. Please choose which review number you want to read.");
+        if(numberInput < 0 || numberInput > reviews1.length) {
+            console.log("That is not a valid review number. Reselect the movie and try again.");
+            return viewReviews();
+        }
         console.log("Rating number " + numberInput + ":  " + ratings5[temp] + "/5 : " + reviews5[temp]);
     } else {
         console.log("That is an invalid response, try again.");
         return viewReviews();
     }
+    return main();
+}
+
+function averageRatings() {
+    let averages = [];
+    for (let i = 0; i < ratings1.length; i++) {
+        averages[0] = Number(averages[0]) + Number(ratings1[i]);
+    }
+    averages[0] = averages[0] / ratings1.length;
+    for (let i = 0; i < ratings2.length; i++) {
+        averages[1] = Number(averages[1]) + Number(ratings4[i]);
+    }
+    averages[1] = averages[1] / ratings2.length;
+    for (let i = 0; i < ratings3.length; i++) {
+        averages[2] = Number(averages[2]) + Number(ratings4[i]);
+    }
+    averages[2] = averages[2] / ratings3.length;
+    for (let i = 0; i < ratings4.length; i++) {
+        averages[3] = Number(averages[3]) + Number(ratings4[i]);
+    }
+    averages[3] = averages[3] / ratings4.length;
+    for (let i = 0; i < ratings2.length; i++) {
+        averages[4] = Number(averages[4]) + Number(ratings5[i]);
+    }
+    averages[0] = averages[0] / ratings1.length;
+    averages[1] = averages[1] / ratings2.length;
+    averages[2] = averages[2] / ratings3.length;
+    averages[3] = averages[3] / ratings4.length;
+    averages[4] = averages[4] / ratings5.length;
+    averages[0] = averages[0].toFixed(2);
+    averages[1] = averages[1].toFixed(2);
+    averages[2] = averages[2].toFixed(2);
+    averages[3] = averages[3].toFixed(2);
+    averages[4] = averages[4].toFixed(2);
+    console.log("The average rating for " + movieTitles[3] + " is " + averages[0] + " after " + ratings4.length + " ratings.");
+
     return main();
 }

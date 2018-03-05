@@ -38,7 +38,13 @@ function reviewWriting() {
         reviews1[reviews1.length] = PROMPT.question("Please enter a review for " + movieTitles[0]  + "\n");
     } else if (numberInput == 2) {
         ratings2[ratings2.length] = PROMPT.question("Please enter a rating for " + movieTitles[1]  + "\n");
-        reviews2[reviews2.length] = PROMPT.question("Please enter a rating for " + movieTitles[1]  + "\n");
+        if (ratings2[ratings2.length-1] > 5 || ratings2[ratings2.length-1] < 0) {
+            ratings2.pop();
+            console.log("I'm sorry, that is an invalid response. Please reselect your movie and try again.");
+            return reviewWriting();
+        }
+
+        reviews2[reviews2.length] = PROMPT.question("Please enter a review for " + movieTitles[1]  + "\n");
         if (ratings2[ratings2.length-1] > 5 || ratings2[ratings2.length-1] < 0) {
             ratings2.pop();
             console.log("I'm sorry, that is an invalid response. Please reselect your movie and try again.");
@@ -126,36 +132,31 @@ function viewReviews() {
 
 function averageRatings() {
     let averages = [];
-    for (let i = 0; i < ratings1.length; i++) {
-        averages[0] = Number(averages[0]) + Number(ratings1[i]);
+    averages[0] = 0;
+    for(let i = 0; i < ratings1.length; i++) {
+        averages[0] = averages[0] + ratings1[i];
     }
     averages[0] = averages[0] / ratings1.length;
-    for (let i = 0; i < ratings2.length; i++) {
-        averages[1] = Number(averages[1]) + Number(ratings4[i]);
+    console.log(averages[0]);
+    for(let i = 0; i < ratings2.length; i++) {
+        averages[1] = averages[1] + ratings2[i];
     }
     averages[1] = averages[1] / ratings2.length;
-    for (let i = 0; i < ratings3.length; i++) {
-        averages[2] = Number(averages[2]) + Number(ratings4[i]);
+    averages[2] = 0;
+    for(let i = 0; i < ratings3.length; i++) {
+        averages[2] = averages[2] + ratings3[i];
     }
     averages[2] = averages[2] / ratings3.length;
-    for (let i = 0; i < ratings4.length; i++) {
-        averages[3] = Number(averages[3]) + Number(ratings4[i]);
+    averages[3] = 0;
+    for(let i = 0; i < ratings4.length; i++) {
+        averages[3] = averages[3] + ratings4[i];
     }
-    averages[3] = averages[3] / ratings4.length;
-    for (let i = 0; i < ratings2.length; i++) {
-        averages[4] = Number(averages[4]) + Number(ratings5[i]);
-    }
-    averages[0] = averages[0] / ratings1.length;
-    averages[1] = averages[1] / ratings2.length;
-    averages[2] = averages[2] / ratings3.length;
-    averages[3] = averages[3] / ratings4.length;
     averages[4] = averages[4] / ratings5.length;
-    averages[0] = averages[0].toFixed(2);
-    averages[1] = averages[1].toFixed(2);
-    averages[2] = averages[2].toFixed(2);
-    averages[3] = averages[3].toFixed(2);
-    averages[4] = averages[4].toFixed(2);
-    console.log("The average rating for " + movieTitles[3] + " is " + averages[0] + " after " + ratings4.length + " ratings.");
-
+    averages[4] = 0;
+    for(let i = 0; i < ratings5.length; i++) {
+        averages[4] = averages[4] + ratings5[i];
+    }
+    averages[4] = averages[4] / ratings4.length;
+    points.sort(function(a, b){return b-a});
     return main();
 }

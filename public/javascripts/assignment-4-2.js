@@ -13,7 +13,7 @@ function init() {
 init();
 main();
 function mainPrompt() {
-    numberInput = PROMPT.question("Please enter a selection. 1-Write a review 2-View reviews for a movie 3-View rating of movies (highest to lowest) \n");
+    numberInput = PROMPT.question("Please enter a selection. 1-Write a review 2-View reviews for a movie 3-View average ratings of movies\n");
     if (numberInput == 1) {
         return reviewWriting();
     }else if (numberInput == 2) {
@@ -77,7 +77,6 @@ function reviewWriting() {
     } else {
         console.log("Invalid response, try again.");
     }
-    console.log(numberInput + "     " + ratings1[ratings1.length - 1] + reviews1[reviews1.length - 1] );
     return main();
 }
 
@@ -137,26 +136,30 @@ function averageRatings() {
         averages[0] = averages[0] + ratings1[i];
     }
     averages[0] = averages[0] / ratings1.length;
-    console.log(averages[0]);
+    console.log(movieTitles[0] + " - " + averages[0]);
     for(let i = 0; i < ratings2.length; i++) {
         averages[1] = averages[1] + ratings2[i];
     }
     averages[1] = averages[1] / ratings2.length;
+    console.log(movieTitles[1] + " - " + averages[1]);
     averages[2] = 0;
     for(let i = 0; i < ratings3.length; i++) {
         averages[2] = averages[2] + ratings3[i];
     }
     averages[2] = averages[2] / ratings3.length;
+    console.log(movieTitles[2] + " - " + averages[2]);
     averages[3] = 0;
     for(let i = 0; i < ratings4.length; i++) {
         averages[3] = averages[3] + ratings4[i];
     }
-    averages[4] = averages[4] / ratings5.length;
+    averages[3] = averages[3] / ratings5.length;
+    console.log(movieTitles[3] + " - " + averages[3]);
     averages[4] = 0;
     for(let i = 0; i < ratings5.length; i++) {
         averages[4] = averages[4] + ratings5[i];
     }
     averages[4] = averages[4] / ratings4.length;
-    points.sort(function(a, b){return b-a});
+    console.log(movieTitles[4] + " - " + averages[4]);
+    averages.sort(function(a, b){return b-a});
     return main();
 }
